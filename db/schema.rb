@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150204162841) do
+ActiveRecord::Schema.define(version: 20150204165811) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "content"
@@ -32,6 +32,13 @@ ActiveRecord::Schema.define(version: 20150204162841) do
   end
 
   add_index "hashtags", ["name"], name: "index_hashtags_on_name", unique: true
+
+  create_table "hashtags_posts", id: false, force: :cascade do |t|
+    t.integer "hashtag_id", null: false
+    t.integer "post_id",    null: false
+  end
+
+  add_index "hashtags_posts", ["hashtag_id", "post_id"], name: "index_hashtags_posts_on_hashtag_id_and_post_id", unique: true
 
   create_table "posts", force: :cascade do |t|
     t.text     "content"
