@@ -8,8 +8,8 @@ class Post < ActiveRecord::Base
   validate :picture_size
 
   # has_and_belongs_to_many :hashtags, class_name: "Hashtag",
-  #                                    join_table: :hashtags_microposts,
-  #                                    foreign_key: "micropost_id",
+  #                                    join_table: :hashtags_posts,
+  #                                    foreign_key: "post_id",
   #                                    dependent: :destroy
   after_create :analyze_post
   private
